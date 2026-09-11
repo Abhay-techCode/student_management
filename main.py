@@ -2,6 +2,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from supabase import create_client, Client
 from dotenv import load_dotenv
+from fastapi.responses import FileResponse
 import os
 
 
@@ -60,15 +61,11 @@ app.add_middleware(
 # ROOT
 # =========================================================
 
+
+
 @app.get("/")
 def root():
-
-    return {
-        "message": "Student Management API is running",
-        "database": "Supabase",
-        "table": "students"
-    }
-
+    return FileResponse("frontend/index.html")
 
 # =========================================================
 # DATABASE CONNECTION TEST
