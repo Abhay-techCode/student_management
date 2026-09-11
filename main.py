@@ -1,3 +1,4 @@
+from fastapi.staticfiles import StaticFiles
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from supabase import create_client, Client
@@ -42,6 +43,7 @@ app = FastAPI(
     description="FastAPI backend connected to Supabase",
     version="1.0.0"
 )
+app.mount("/static", StaticFiles(directory="frontend"), name="static")
 
 
 # =========================================================
